@@ -1,4 +1,4 @@
-# Ably Realtime (API, Client)
+# Ably Realtime DEMO (API, Client)
 
 이 프로젝트는 .NET MAUI를 사용하여 Ably와 통신하는 데모 클라이언트 애플리케이션입니다. 사용자는 로그인하고 Ably 채널에 연결하여 메시지를 주고받을 수 있습니다.
 
