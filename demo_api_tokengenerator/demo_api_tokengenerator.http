@@ -1,0 +1,46 @@
+@demo_api_tokengenerator_HostAddress = http://localhost:5010
+
+### 로그인 테스트 (관리자)
+POST {{demo_api_tokengenerator_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "userId": "user1@bmw.net",
+  "password": "password1"
+}
+
+### 로그인 테스트 (일반 사용자)
+POST {{demo_api_tokengenerator_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "userId": "user2@bmw.net",
+  "password": "password2"
+}
+
+### 잘못된 로그인 테스트 (존재하지 않는 사용자)
+POST {{demo_api_tokengenerator_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "userId": "nonexistent@bmw.net",
+  "password": "password123"
+}
+
+### 잘못된 로그인 테스트 (비밀번호 불일치)
+POST {{demo_api_tokengenerator_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "userId": "user1@bmw.net",
+  "password": "wrongpassword"
+}
+
+### 토큰 생성 테스트 (관리자)
+GET {{demo_api_tokengenerator_HostAddress}}/api/auth/gettoken?userId=user1@bmw.net
+
+### 토큰 생성 테스트 (일반 사용자)
+GET {{demo_api_tokengenerator_HostAddress}}/api/auth/gettoken?userId=user2@bmw.net
+
+### 토큰 생성 테스트 (존재하지 않는 사용자)
+GET {{demo_api_tokengenerator_HostAddress}}/api/auth/gettoken?userId=nonexistent@bmw.net

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="demo_maui_client.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30">
+
+            <Label 
+                Text="Ably 토큰 데모"
+                FontSize="24"
+                HorizontalOptions="Center" />
+
+            <Border Stroke="Gray" Padding="20" Margin="0,0,0,20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="데모 사용자 선택" FontSize="18" FontAttributes="Bold"/>
+                    <Picker x:Name="DemoUserPicker" Title="데모 사용자 선택" SelectedIndexChanged="OnDemoUserSelected">
+                        <Picker.Items>
+                            <x:String>선택하세요</x:String>
+                            <x:String>데모 1: 마우이 (관리자)</x:String>
+                            <x:String>데모 2: 크로스 (일반 사용자)</x:String>
+                            <x:String>데모 3: 플랫폼 (일반 사용자)</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Border>
+            <StackLayout>
+                <Label Text="데모 옵션" FontSize="Medium" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal">
+                    <Switch x:Name="HistorySwitch" />
+                    <Label Text="메시지 히스토리 사용" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Switch x:Name="RewindSwitch" />
+                    <Label Text="되감기 기능 사용" VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+
+
+            <Border Stroke="Gray" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="로그인" FontSize="18" FontAttributes="Bold"/>
+                    <Entry x:Name="UserId" Placeholder="사용자 ID" Text="user1@bmw.net"/>
+                    <Entry x:Name="Password" Placeholder="비밀번호" IsPassword="True" Text="password1"/>
+                    <Button x:Name="LoginButton" Text="로그인" Clicked="OnLoginClicked"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border x:Name="UserInfoFrame" Stroke="Gray" Padding="20" IsVisible="False">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="사용자 정보" FontSize="18" FontAttributes="Bold"/>
+                    <Label x:Name="UserNameLabel" Text="이름: "/>
+                    <Label x:Name="UserRoleLabel" Text="역할: "/>
+                    <Label x:Name="TokenLabel" Text="토큰: " LineBreakMode="CharacterWrap"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border x:Name="AblyFrame" Stroke="Gray" Padding="20" IsVisible="False">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Ably 실시간 통신" FontSize="18" FontAttributes="Bold"/>
+                    <Entry x:Name="ChannelName" Placeholder="채널 이름" Text="test-channel"/>
+                    <Button x:Name="ConnectButton" Text="Ably 연결" Clicked="OnConnectClicked"/>
+                    <Button x:Name="DisconnectButton" Text="Ably 연결 해제" Clicked="OnDisconnectClicked" IsEnabled="False"/>
+
+                    <Entry x:Name="MessageInput" Placeholder="메시지 입력"/>
+                    <Button x:Name="SendButton" Text="메시지 전송" Clicked="OnSendClicked" IsEnabled="False"/>
+
+                    <Label Text="수신된 메시지:" FontAttributes="Bold"/>
+                    <Label x:Name="ReceivedMessagesLabel" Text="" LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
